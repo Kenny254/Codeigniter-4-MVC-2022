@@ -10,7 +10,7 @@
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item"><a href="<?php echo url('/processes') ?>"><?php echo lang('App.home') ?></a></li>
+          <li class="breadcrumb-item"><a href="<?php echo url('/students') ?>"><?php echo lang('App.home') ?></a></li>
           <li class="breadcrumb-item active"><?php echo lang('Applicants') ?></li>
         </ol>
       </div>
@@ -29,7 +29,7 @@
                 <h3 class="card-title p-3"><?php echo lang('Applicants') ?></h3>
                 <div class="ml-auto p-2">
                     <?php if (hasPermissions('fverifications_add')): ?>
-                      <a href="<?php echo url('processes/add') ?>" class="btn btn-primary btn-sm"><span class="pr-1"><i class="fa fa-plus"></i></span> <?php echo lang('App.add_students') ?></a>
+                      <a href="<?php echo url('students/add') ?>" class="btn btn-primary btn-sm"><span class="pr-1"><i class="fa fa-plus"></i></span> <?php echo lang('App.add_students') ?></a>
                     <?php endif ?>
                 </div>
               </div>
@@ -128,17 +128,17 @@
       				</td>
                     
                     <td>
-                        <?php if (hasPermissions('processes_edit')): ?>
-                        <a href="<?php echo url('processes/edit/'.$row->id) ?>" class="btn btn-sm btn-primary" title="<?php echo lang('App.edit_user') ?>" data-toggle="tooltip"><i class="fas fa-edit"></i></a>
+                        <?php if (hasPermissions('students_edit')): ?>
+                        <a href="<?php echo url('students/edit/'.$row->id) ?>" class="btn btn-sm btn-primary" title="<?php echo lang('App.edit_user') ?>" data-toggle="tooltip"><i class="fas fa-edit"></i></a>
                         <?php endif ?>
                         
-                        <?php if (hasPermissions('processes_view')): ?>
-                          <a href="<?php echo url('processes/view/'.$row->id) ?>" class="btn btn-sm btn-info" title="<?php echo lang('App.view_user') ?>" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
+                        <?php if (hasPermissions('students_view')): ?>
+                          <a href="<?php echo url('students/view/'.$row->id) ?>" class="btn btn-sm btn-info" title="<?php echo lang('App.view_user') ?>" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
                         <?php endif ?>
                         
-                        <?php if (hasPermissions('processes_delete')): ?>
+                        <?php if (hasPermissions('students_delete')): ?>
                           <?php if ($row->id!=1 && logged('id')!=$row->id): ?>
-                          <a href="<?php echo url('processes/delete/'.$row->id) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Do you really want to delete this user ?')" title="<?php echo lang('App.delete_user') ?>" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
+                          <a href="<?php echo url('students/delete/'.$row->id) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Do you really want to delete this user ?')" title="<?php echo lang('App.delete_user') ?>" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
                             
                           <?php else: ?>
                           
@@ -173,7 +173,7 @@
 
 <script>
 window.updateUserStatus = (id, status) => {
-  $.get( '<?php echo url('processes/change_status') ?>/'+id, {
+  $.get( '<?php echo url('students/change_status') ?>/'+id, {
     status: status
   }, (data, status) => {
     if (data=='done') {
